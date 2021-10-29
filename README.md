@@ -1,5 +1,7 @@
 # basedataflow
 
+view page: https://totallyrealhumanperson.github.io/baseflow/
+
 Scripts:
 * Canvas (global variables, init, and animate) this set us up creates demo cards and calls animate which updates the canvas visually
 * Card (attributes, draw, update) this is what draws the cards on the canvas. Update is called by animate
