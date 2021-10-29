@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="56" height="56" viewBox="0 0 56 56">
+  <defs>
+    <clipPath id="clip-pdf-home">
+      <rect width="56" height="56"/>
+    </clipPath>
+  </defs>
+  <g id="pdf-home" clip-path="url(#clip-pdf-home)">
+    <path id="Subtraction_8" data-name="Subtraction 8" d="M-2108.166-1223h-17.347a2,2,0,0,1-2-2v-23.321h-4.157a1.968,1.968,0,0,1-1.907-1.4,1.968,1.968,0,0,1,.757-2.239l24.67-17.335a1.987,1.987,0,0,1,1.149-.364,1.99,1.99,0,0,1,1.15.364l24.67,17.335a1.968,1.968,0,0,1,.757,2.239,1.968,1.968,0,0,1-1.907,1.4h-4.157V-1225a2,2,0,0,1-2,2h-5.289v-20.894h-14.389V-1223Zm-14.877-20.895v12.218h10.669v-12.218Z" transform="translate(2135 1274.327)" fill="#a8a8a8"/>
+  </g>
+</svg>
