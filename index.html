@@ -7,14 +7,17 @@
   <title>Base Flow</title>
 
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"
   integrity="sha512-/seDHxVfh1NvFUscAj8GsHQVZJvr2jjAoYsNL7As2FCaFHUHYIarl3sRCvVlFgyouVNiRgHIebyLKjpgd1SLDw=="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
-  <script src="card.js"></script>
+  <script src="objects.js"></script>
   <script src="functions.js"></script>
   <script src="event-listeners.js"></script>
 
@@ -23,9 +26,9 @@
       background: #DBDBDB;
     }
 
-    .btn-primary {
+    .btn {
       height: 30px;
-      padding-top: 2px;
+      padding-top: 3px;
     }
 
   </style>
@@ -37,22 +40,81 @@
 
   <div style="z-index: 7; height: 45px; position: fixed; top: 0px; right: 0px; left: 0px; background: white;">
     <img src="assets/logo.svg" width="30" height="30"  alt="" style="margin: 5px 5px 5px 10px;"> 
-    <img src="assets/home.svg" width="25" height="25"  alt="" style="position: fixed; top: 8px; left: 60px;"> 
-    <h5 id="cardTitle" style="position: fixed; top: 10px; left: 110px; color:black; font-weight: 400;">Base Flow </h5>
-    <button id="createAddCard"  class="btn btn-primary" style="position: fixed; top: 8px; left: 300px;" onclick="createNewCard()">Create Card</button>
+    
+    <div class="container" style="position: fixed; top: 8px; left: 30%;">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="border-color: white;">
+        <span id="currentProjectTitle" style="font-size: large; padding-right: 5px;">My Cool Project</span>
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Your Projects</li>
+          <li><a class="dropdown-item" href="#">A cool Project 1</a></li>
+          <li><a class="dropdown-item" href="#" style="color: blue;">My Cool Project</a></li>
+          <li><a class="dropdown-item" href="#">Neat fun Project Title</a></li>
+          <li><a class="dropdown-item" href="#">Neat fun Project Title</a></li>
+          <li class="divider"></li>
+          <li style="text-align: center; color: blue;"><a href="#">CREATE NEW PROEJCT</a></li>
+        </ul>
+      </div>
+    </div>
+
+    
+
+
+
+    <button id="editProjectNameButton"  class="btn btn-light" style="position: fixed; top: 8px; left: 50%;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+      </svg>
+    </button>
+    <button id="deleteProjectButton"  class="btn btn-light" style="position: fixed; top: 8px; left: 55%;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+      </svg>
+      <span class="trash"></span>
+    </button>
+    <button id="createNewCardButton"  class="btn btn-primary" style="position: fixed; top: 8px; left: 60%;" onclick="createNewCard()">Create Card</button>
+    
     <div style="position: absolute; top: 8px; right: 10px;">
 
-      <section id="whenSignedOut">
 
-        <button id="signInBtn" class="btn btn-primary">Sign in with Google</button>
+      <section id="whenSignedOut" hidden="true">
+
+        <button id="signInBtn" class="btn btn-light">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+        </button>
 
       </section>
 
-      <section id="whenSignedIn" hidden="true">
+      <section id="whenSignedIn" >
 
         <div id="userDetails"></div>
 
-        <button id="signOutBtn" class="btn btn-primary" style="position: fixed; top: 10px; right: 10px;">Sign Out</button>
+        
+          <div id="signOutBtn" class="dropdown" style="position: fixed; top: 10px; right: 10px;">
+            <button class="btn btn-default dropdown-toggle " type="button" data-toggle="dropdown" style="border-color: white;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-header">Bob Smith</li>
+              <li><a href="#">Bob.Smith@gmail.com</a></li>
+              <br>
+              <li class="dropdown-header">Subscriptoin</li>
+              <li><a href="#">Trial</a></li>
+              <li><a href="#" style="color: blue;">Upgrade</a></li>
+              <li class="divider"></li>
+              <li style="text-align: center; color: blue;"><a href="#">SIGN OUT</a></li>
+            </ul>
+          </div>
+     
+
 
       </section>
 

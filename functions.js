@@ -6,7 +6,7 @@ function createNewCard() {
     var x = Math.floor(Math.random() * (innerWidth  - width * 2) + width);
     var y = Math.floor(Math.random() * (innerHeight - height * 2) + height);
 
-    var newCardObj = new Card(x, y, width, height, "asdf",)
+    var newCardObj = new Card(x, y, "asdf",)
     activeActionCards.push(newCardObj)
     // TO DO: ADD TO FIRESTORE
 

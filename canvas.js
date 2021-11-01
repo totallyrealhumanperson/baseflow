@@ -7,6 +7,19 @@ canvas.height = window.innerHeight + extraBoundries;
 var c = canvas.getContext('2d');
 
 var activeActionCards = [];
+
+// var userProjects = {
+//     "CoolProject1" : [ExampCard_1, ExampCard_2, ExampCard_3],
+//     "MyNeatProject" : [ExampCard_4, ExampCard_4],
+//     "AnoterProject" : [ExampCard, ExampCard, ExampCard, ExampCard],
+// }
+
+var userObj = {
+    "name" : "bob",
+    "email" : "bob@gmail.com",
+    "subscriptionStatus" : "Trial",
+}
+
 var mainnCard;
 
 var activeCard = "allCardsTable"; // so card can be blue and stays until something else is clicked // to do
@@ -31,10 +44,13 @@ let mouse = {
 
 
 
+
 function init() {
     
+    console.log("switch whenSignedOut, and whenSignedIn hidden attr");
+
     // CREATE AN EXAMPLE CARD
-    var demoTestCard = new Card(300, 300, 300, 300, "asdf", [], [])
+    var demoTestCard = new Card(200, 500, "asdf", [], [])
     // STORE IN CARDS ARRAY
     activeActionCards.push(demoTestCard)
     // TO DO: FIRESTORE SHOULD UPDATE THIS ARRAY
