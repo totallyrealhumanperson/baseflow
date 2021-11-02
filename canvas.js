@@ -7,25 +7,21 @@ canvas.height = window.innerHeight + extraBoundries;
 var c = canvas.getContext('2d');
 
 var activeActionCards = [];
+var userProjectsObj = [];
 
-// var userProjects = {
-//     "CoolProject1" : [ExampCard_1, ExampCard_2, ExampCard_3],
-//     "MyNeatProject" : [ExampCard_4, ExampCard_4],
-//     "AnoterProject" : [ExampCard, ExampCard, ExampCard, ExampCard],
-// }
+var activeProject;
+var activeCard;
 
+
+// TO DO: FIREBASE AUTH SHOULD PROVIDE THIS
 var userObj = {
-    "name" : "bob",
-    "email" : "bob@gmail.com",
-    "subscriptionStatus" : "Trial",
+    name : "bob",
+    email : "bob@gmail.com",
+    subscriptionStatus : "Trial",
 }
 
-var mainnCard;
-
-var activeCard = "allCardsTable"; // so card can be blue and stays until something else is clicked // to do
 
 var cardIdIncrementor = 0; // tracks number of cards in deck to allocate card IDs
-
 
 let mouseActual = {
     x: 10,
@@ -46,14 +42,31 @@ let mouse = {
 
 
 function init() {
-    
-    console.log("switch whenSignedOut, and whenSignedIn hidden attr");
 
-    // CREATE AN EXAMPLE CARD
-    var demoTestCard = new Card(200, 500, "asdf", [], [])
-    // STORE IN CARDS ARRAY
-    activeActionCards.push(demoTestCard)
+    // create fake init data.
     // TO DO: FIRESTORE SHOULD UPDATE THIS ARRAY
+    for (let index = 0; index < 4; index++) {
+        var x = Math.floor(Math.random() * (innerWidth  - 200 * 2) + 200);
+        var y = Math.floor(Math.random() * (innerHeight - 200 * 2) + 200);
+        var newCardObj = new Card(x, y, "asdf", )
+
+        var newProj = new Project("ABVWRwgve" + index, "My Cool Proj #" + index, [newCardObj])
+        userProjectsObj.push(newProj)
+    }
+
+
+    // UPDATE USER PROFILE INFO WITH USER OBJECT
+    document.getElementById("userNameLabel").innerHTML = userObj.name;
+    document.getElementById("userEmailLabel").innerHTML = userObj.email;
+    document.getElementById("userSubscriptionStatusLabel").innerHTML = userObj.subscriptionStatus;
+    
+    // SELECT THE FIRST PROJECT TO GET USER STARTED 
+    selectProject(0)
+    
+    // UPDATE DROPDOWN PROJECT LIST
+    updateListOfProjectsInDropdown()
+
+    
 
 }
 
@@ -67,7 +80,7 @@ function animate() {
 
     // UPDATE ALL CARDS
     for (let index = 0; index < activeActionCards.length; index++) {
-        activeActionCards[index].update(activeActionCards);
+        activeActionCards[index].draw(activeActionCards);
     }
     
 }

@@ -1,16 +1,16 @@
 
 // OBJECTS
 class Card {
-    constructor(x, y, passedType) {
+    constructor(x, y, projectId) {
 
         // IDENTIFICATION
         cardIdIncrementor += 1;
         this.id = cardIdIncrementor;
         // TO DO: ADD PROJECT ID FROM FIREBASE
-        this.projectId = "";
+        this.projectId = projectId
         // TO DO: ADD DBID FROM FIREBASE (SO ITS UNIQUE)
         this.guid = ""
-        this.type = passedType;
+        this.type = "";
         this.x = x;
         this.y = y;
         // TO DO: STORE THESE AS FIELDS IN CARDS COLLECTION
@@ -24,7 +24,6 @@ class Card {
 
         // DRAW
         this.draw = function () {
-
 
             // UPDATE CARD LOCATION IF BEING MOVED
             if (this.currentlyBeingMoved == true) {
@@ -56,6 +55,16 @@ class Card {
             this.draw();
             
         };
+    }
+}
+
+
+class Project {
+    constructor(id, name, cardsList){
+        this.id = id;
+        this.name = name;
+        this.cards = cardsList; 
+
     }
 }
 
